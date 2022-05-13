@@ -27,21 +27,21 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "lint": "npm run lint:css && npm run lint:js",
+    "lint:style": "stylelint 'src/**/*.{css,scss}'",
+    "lint:app": "eslint 'src/**/*.ts'",
+    "lint:fix": "npm run lint:style -- --fix && npm run lint:app -- --fix",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "prepare": "husky install",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --watchAll=false",
+    "unit": "jest --config ./jest.config.js",
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test && lint-staged"
-    }
   },
   "browserslist": {
     "production": [
@@ -55,5 +55,18 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/core": "7.17.10",
+    "@babel/preset-env": "7.17.10",
+    "@babel/preset-typescript": "7.16.7",
+    "@typescript-eslint/eslint-plugin": "5.23.0",
+    "@typescript-eslint/parser": "5.23.0",
+    "babel-jest": "28.1.0",
+    "eslint": "8.15.0",
+    "husky": "8.0.0",
+    "stylelint": "14.8.2",
+    "stylelint-config-rational-order": "0.1.2",
+    "stylelint-config-standard": "25.0.0",
+    "stylelint-order": "5.0.0"
+  }
 }
